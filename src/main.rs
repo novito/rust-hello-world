@@ -1,32 +1,15 @@
-use std::io;
-use std::cmp::Ordering;
-use rand::Rng;
-
 fn main() {
-    println!("Guess the number");
+    // Collections: Tuples can have elements with different types - arrays all members must have
+    // same type
+    let tuple = (20, 'a');
+    let array = [1,2,3];
 
-    let secret_number = rand::thread_rng().gen_range(1, 101);
-    println!("The secret number is: {}", secret_number);
+    println!("Let's print this: {:?}", tuple);
 
-    loop {
-        println!("Please input your guess");
-        let mut guess = String::new();
+    let a = [1, 2, 3, 4, 5];
+    let index = 10;
 
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read the guess");
+    let element = a[index];
 
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {}", guess);
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => println!("You win!"),
-        }
-    }
+    println!("The value of element is: {}", element);
 }
